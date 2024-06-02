@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Khea Cassandra A. Miranda">
+    <meta name="keywords" content="HTML, CSS, Javascript">
+    <meta name="revised" content="01/01/24">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CRubik:300,400,500,700,900&display=swap" media="all">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"> 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-transform: capitalize;
+            text-decoration: none;  
+            transition: .2s linear;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; 
+            background-size: cover;
+            min-height: 100vh;
+        }
+        html {
+            font-size: 90%;
+            scroll-behavior: smooth;
+            scroll-padding-top: 6rem;
+            overflow-x: hidden;
+        }
+
+        
+        header { 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+            background: transparent; 
+        }
+        .logo {
+            font-size: 2em;
+            color: #8ceea1;
+            user-select: none;
+        }
+        .navigation a {
+            position: relative;
+            font-size: 1.1em;
+            color: #8ceea1;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 40px; 
+        }
+        .navigation a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #8ceea1;
+            border-radius: 5px;
+            left: 0;
+            bottom: -6px;
+            transform-origin: right;
+            transform: scaleX(0);
+            transition: transform .5s;
+        }
+        .navigation a:hover::after {
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+        .navigation .btnSignout-popup {
+            width: 100px;
+            height: 40px;
+            background: transparent;
+            border: 2px solid #8ceea1;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 90%;
+            color: #0f0d0d;
+            font-weight: 500;
+            margin-left: 40px;
+            transition: .5s;
+        }
+        .navigation .btnSignout-popup:hover {
+            background: #8ceea1;
+            color: #162938;
+        }
+        section {
+            padding: 2rem 9%;
+        }
+        .home {
+            background-position: left;
+        }
+        .heading {
+            text-align: center;
+            font-size: 4rem;
+            color: rgb(225, 242, 230);
+            padding: 1rem;
+            margin: 2rem 0;
+            background-color: rgb(9, 137, 36);
+            border-radius: 10px;
+        }
+        .heading span {
+            color: rgb(225, 242, 230);
+        }
+        .home .content h3 {
+            font-size: 6rem;
+            color: white;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            border-radius: 5rem;
+            background: orange;
+            color: black;
+            padding: .9rem 3.5rem;
+            cursor: pointer;
+            font-size: 1.7rem;
+        }
+        .btn:hover {
+            background: white;
+        }
+        .home {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            background: url('land.jpg') no-repeat;
+            background-size: cover;
+        }
+        .home .content {
+            max-width: 50rem;
+        }
+        .home .content h3 {
+            font-size: 6rem;
+            color: white;
+            text-align: center;
+            align-items: center;
+        
+        }
+        
+
+        .about .row, .about2 .row, .about3 .row, .about4 .row{
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+            padding-bottom: 3rem;
+        }
+        .about .row .video-container, .about2 .row .video-container, .about3 .row .video-container, .about4 .row .video-container{
+            flex: 1 1 40rem;
+            position: relative;
+        }
+        .about .row .video-container video, .about2 .row .video-container video, .about3 .row .video-container video,  .about4 .row .video-container video {
+            width: 100%;
+            border: 1.5rem solid #fff;
+            border-radius: .5rem;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+            height: 100%;
+            object-fit: cover;
+        }
+        .about .row .video-container h3, .about2 .row .video-container h3, .about3 .row .video-container h3, .about4 .row .video-container h3{
+            position: absolute;
+            top: 50%; 
+            transform: translateY(-50%);
+            font-size: 3rem;
+            background: white;
+            width: 100%;
+            padding: 1rem 2rem;
+            text-align: center;
+            mix-blend-mode: screen;
+        }
+        .about .row .content, .about2 .row .content, .about3 .row .content, .about4 .row .content{
+            flex: 1 1 40rem; 
+        }
+        .about .row .content h3, .about2 .row .content h3, .about3 .row .content h3, .about4 .row .content h3{
+            font-size: 3rem;
+            color: #043e0f;
+        }
+        .about .row .content p, .about2 .row .content p, .about3 .row .content p, .about4 .row .content p{
+            font-size: 16px;
+            color: #0a0606;
+            padding: 5px 0;
+            padding-top: 10px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .btn2, .btn3, .btn4, .btn5{
+            display: inline-block;
+            margin-top: 1rem;
+            border-radius: 5rem;
+            background: orange;
+            color: black;
+            padding: .9rem 3.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn2:hover, .btn3:hover, .btn4:hover, .btn5:hover{
+            background: rgb(96, 234, 133);
+        }
+
+        footer.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-col ul li a:hover {
+    text-decoration: underline;
+    color: #ddd;
+}
+
+.social-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.social-links a:hover {
+    color: #ddd;
+}
+
+@media (max-width: 768px) {
+    .footer-row {
+        flex-direction: column;
+    }
+
+    .footer-col {
+        margin-bottom: 30px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>    
+        <h2 class="logo">HabiVior</h2>
+        <nav class="navigation" id = "navigation">
+            <a href="spage.html">Back Home</a>
+            <a href="#about">Foraging</a>
+            <a href="#animalBehavior1">Courtship</a>
+            <a href="#animalBehavior2">Migration</a>
+            <a href="#animalBehavior3">Adaptations To Land Habitats</a>
+            <button class="btnSignout-popup" id = "btnSignout-popup">Sign out</button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="home" id="home">
+            <div class="content">
+            </div>
+        </section>
+        
+        <section class="about" id="about">
+            <h1 class="heading"> <span> Animal Behavior</span> in Land </h1>
+            <div class="row">
+                <div class="video-container">
+                    <video src="foraging.mp4" loop autoplay muted></video>
+                    <h3>Foraging</h3>
+                </div>
+                <div class="content">
+                    <h3>Foraging</h3>
+                    <p>Foraging behavior includes all the methods by which an organism acquires and utilizes sources of energy and nutrients. This includes the location and consumption of resources, as well as their retrieval and storage, within the context of the larger community.</p>
+                    <p> Foraging theory seeks to predict how an animal would choose to forage within its environment, based on the knowledge of resource availability, competition, and predation risk (Kramer, 2001).</p>
+                    <a href="https://www.sciencedirect.com/topics/earth-and-planetary-sciences/foraging-behavior" class="btn2">Read more</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="about2" id="animalBehavior1">
+            <div class="row">
+                <div class="video-container">
+                    <video src="courtship.mp4" loop autoplay muted></video>
+                    <h3>Courtship</h3>
+                </div>
+                <div class="content">
+                    <h3>Courtship</h3>
+                    <p>Females typically put much more time and energy into reproduction than do males. Therefore, females are likely to be more selective than males when choosing mates. In fact, it is most often the females of a species that decide who mates with whom, not the males. Males, for their part, try to attract females for mating. In many species, females tend to select males that are larger in size or have more pronounced male traits than other males. </p>
+                    <p>To attract females, males may perform display behaviors or engage in physical combat with other males. These behaviors are called courtship behaviors. They get the attention of females and give the males a chance to show off their traits and abilities. Generally, the more impressive males are in these displays, the greater chance they have being selected by females as mates.</p>
+                    <a href="https://www.britannica.com/science/reproductive-behaviour-zoology/Courtship" class="btn3">Read more</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about3" id="animalBehavior2">
+            <div class="row">
+                <div class="video-container">
+                    <video src="migration.mp4" loop autoplay muted></video>
+                    <h3>Migration</h3>
+                </div>
+                <div class="content">
+                    <h3>Migration</h3>
+                    <p>Migration is a pattern of behavior in which animals travel from one habitat to another in search of food, better conditions, or reproductive needs. There are two important factors that make migration different from other types of animal movement</p>
+                    <p>First, migration happens seasonally, and second, migration involves a return journey. This makes it different from emigration, when animals travel to find a new, permanent place to live.</p>
+                    <a href="https://education.nationalgeographic.org/resource/migration/" class="btn4">Read more</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about4" id="animalBehavior3">
+            <div class="row">
+                <div class="video-container">
+                    <video src="adaptation.mp4" loop autoplay muted></video>
+                    <h3>Adaptations to Land Habitats</h3>
+                </div>
+                <div class="content">
+                    <h3>Adaptations to Land Habitats</h3>
+                    <p>An adaptation is a modification or change in the organism's body or behaviour that helps it to survive.</p>
+                    <p>An animal may adapt to its habitat in different ways. It may be a physical or structural adaptation. It may be in the way the body works in circulating and respiration. It may be the way the animal behaves whether it is hunting for food, or running fast to avoid predators or migrating to other places for food or survival.</p>
+                    <a href="https://wwf.panda.org/discover/knowledge_hub/teacher_resources/webfieldtrips/hab_adaptation/" class="btn5">Read more</a>
+                </div>
+            </div>
+        </section>
+
+     
+    </div>
+
+    <br><br><br><br>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <h4>HabiVior</h4>
+                    <ul>
+                        <li><a href="#"></a></li>
+                        <li><a href="https://docs.google.com/document/d/1XlmTj22mFl8V21I0NR5Da1SQEAKj02BwozzWQFgQ-D0/edit?usp=sharing">Sources</a></li>
+                        <li><a href="https://policies.google.com/">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <li><a href="https://docs.google.com/document/d/1XlmTj22mFl8V21I0NR5Da1SQEAKj02BwozzWQFgQ-D0/edit">Phone Number</a></li>
+                        <li><a href="https://www.google.com/maps/place/Philippine+Science+High+School+-+Caraga+Region+Campus/@8.9703516,125.5937176,159m/data=!3m1!1e3!4m14!1m7!3m6!1s0x3301953399c598c3:0xa9bd14af653c9742!2sPhilippine+Science+High+School+-+Caraga+Region+Campus!8m2!3d8.9699987!4d125.5942088!16s%2Fm%2F0_91qp6!3m5!1s0x3301953399c598c3:0xa9bd14af653c9742!8m2!3d8.9699987!4d125.5942088!16s%2Fm%2F0_91qp6?entry=ttu">Address</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://web.facebook.com/khea.amante.9"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/ke.ya06/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script>
+    // Get the "Sign out" button element
+    var signOutButton = document.getElementById('btnSignout-popup');
+
+    // Add onclick event handler to the "Sign out" button
+    signOutButton.onclick = function() {
+        // Redirect to the signup page
+        window.location.href = 'index.html';
+    };
+</script>
+</html>
